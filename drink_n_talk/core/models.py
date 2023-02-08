@@ -46,6 +46,7 @@ class UserLanguage(models.Model):
 
     user = models.ForeignKey(
         User,
+        related_name='languages',
         on_delete=models.CASCADE,
         verbose_name='Пользователь'
     )
@@ -106,6 +107,7 @@ class UserDrink(models.Model):
 
     user = models.ForeignKey(
         User,
+        related_name='drinks',
         on_delete=models.CASCADE,
         verbose_name='Пользователь'
     )

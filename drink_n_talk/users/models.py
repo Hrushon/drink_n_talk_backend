@@ -18,16 +18,6 @@ class User(AbstractUser):
         default='default_user.jpg',
         verbose_name='Аватар'
     )
-    languages = models.ManyToManyField(
-        'Language',
-        through='UserLanguage',
-        verbose_name='Язык(и)'
-    )
-    drinks = models.ManyToManyField(
-        'Drink',
-        through='UserDrink',
-        verbose_name='Напиток(и)'
-    )
     degree = models.IntegerField(
         choices=settings.DEGREE_CHOICES,
         verbose_name='Степень алкогольности'
