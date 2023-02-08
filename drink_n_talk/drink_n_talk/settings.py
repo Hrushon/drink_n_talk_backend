@@ -126,3 +126,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEGREE_CHOICES = [
+    (0, 'Безалкогольное'),
+    (1, 'Слабоалкогольное'),
+    (2, 'Крепкое')
+]
