@@ -62,7 +62,7 @@ class UserLanguage(models.Model):
         """
         verbose_name = 'Пользователь + язык'
         verbose_name_plural = 'Пользователи + языки'
-    
+
     def __repr__(self):
         """
         Добавляет удобочитаемый вывод при вызове экземпляра объекта
@@ -123,7 +123,7 @@ class UserDrink(models.Model):
         """
         verbose_name = 'Пользователь + напиток'
         verbose_name_plural = 'Пользователи + напитки'
-    
+
     def __repr__(self):
         """
         Добавляет удобочитаемый вывод при вызове экземпляра объекта
