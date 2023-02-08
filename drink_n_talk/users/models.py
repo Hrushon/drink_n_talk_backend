@@ -15,7 +15,7 @@ class User(AbstractUser):
     )
     photo = models.ImageField(
         upload_to='/users_photos',
-        default='default_user.jpg'б
+        default='default_user.jpg',
         verbose_name='Аватар'
     )
     languages = models.ManyToManyField(
