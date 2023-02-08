@@ -14,7 +14,7 @@ class User(AbstractUser):
         verbose_name='О себе'
     )
     photo = models.ImageField(
-        upload_to='/users_photos',
+        upload_to='users_photos',
         default='default_user.jpg',
         verbose_name='Аватар'
     )
