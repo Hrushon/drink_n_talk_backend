@@ -14,7 +14,7 @@ class Language(models.Model):
         verbose_name='Название'
     )
     abbreviation = models.SlugField(
-        max_length=5,
+        max_length=7,
         verbose_name='Аббревиатура'
     )
     users = models.ManyToManyField(
@@ -62,6 +62,13 @@ class UserLanguage(models.Model):
         """
         verbose_name = 'Пользователь + язык'
         verbose_name_plural = 'Пользователи + языки'
+
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'language'],
+                name='unique_user_language'
+            )
+        ]
 
     def __repr__(self):
         """
@@ -123,6 +130,13 @@ class UserDrink(models.Model):
         """
         verbose_name = 'Пользователь + напиток'
         verbose_name_plural = 'Пользователи + напитки'
+
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'drink'],
+                name='unique_user_drink'
+            )
+        ]
 
     def __repr__(self):
         """
