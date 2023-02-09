@@ -2,15 +2,19 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from spare.validators import validate_birthday
+
 
 class User(AbstractUser):
     """Кастомизация базовой модели пользователя."""
 
     birth_day = models.DateField(
-        verbose_name='День рождения'
+        verbose_name='День рождения',
+        validators=[validate_birthday]
     )
     about = models.TextField(
         blank=True,
+        max_length=254,
         verbose_name='О себе'
     )
     photo = models.ImageField(
@@ -36,4 +40,4 @@ class User(AbstractUser):
         Добавляет удобочитаемый вывод при вызове экземпляра объекта
         на печать и в оболочке shell.
         """
-        return f'<user.id = {self.id}  | username = {self.username}>'
+        return f'<user.id = {self.id} | username = {self.username}>'
