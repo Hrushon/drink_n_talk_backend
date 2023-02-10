@@ -9,22 +9,26 @@ class User(AbstractUser):
     """Кастомизация базовой модели пользователя."""
 
     birth_day = models.DateField(
-        verbose_name='День рождения',
+        verbose_name='день рождения',
         validators=[validate_birthday]
     )
     about = models.TextField(
         blank=True,
         max_length=254,
-        verbose_name='О себе'
+        verbose_name='о себе'
     )
     photo = models.ImageField(
         upload_to='users_photos',
         default='default_user.jpg',
-        verbose_name='Аватар'
+        verbose_name='аватар'
     )
     degree = models.IntegerField(
         choices=settings.DEGREE_CHOICES,
-        verbose_name='Степень алкогольности'
+        verbose_name='степень алкогольности'
+    )
+    character = models.IntegerField(
+        choices=settings.CHARACTER_CHOICES,
+        verbose_name='слушатель/говорун'
     )
 
     class Meta:
@@ -32,8 +36,8 @@ class User(AbstractUser):
         Сортирует и добавляет названия в админке.
         """
         ordering = ('-id',)
-        verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователи'
+        verbose_name = 'пользователь'
+        verbose_name_plural = 'пользователи'
 
     def __repr__(self):
         """
