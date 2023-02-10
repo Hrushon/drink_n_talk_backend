@@ -288,7 +288,7 @@ class Bar(models.Model):
         return f'<{self.theme} ({self.initiator})>'
 
 
-class BarParicipant(models.Model):
+class BarParticipant(models.Model):
     """
     Промежуточная модель для связывания участников и барной стойки.
     """
