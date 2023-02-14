@@ -1,7 +1,6 @@
 from rest_framework import viewsets
 
 from core.models import Drink, Language, Theme
-
 from .serializers import DrinkSerializer, LanguageSerializer, ThemeSerializer
 
 
