@@ -3,5 +3,6 @@ from django.urls import include, path
 app_name = 'users'
 
 urlpatterns = [
-    path('auth/', include('djoser.urls.authtoken')),
+    path('v1/', include('djoser.urls')),
+    path('v1/', include('djoser.urls.authtoken')),
 ]
