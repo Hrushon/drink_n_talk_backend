@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import Drink, Language, Theme
+from core.models import Bar, Drink, Language, Theme
 
 
 class LanguageSerializer(serializers.ModelSerializer):
@@ -25,3 +25,11 @@ class ThemeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Theme
         fields = ('title', 'tag')
+
+
+class BarSerializer(serializers.ModelSerializer):
+    """Сериализатор для барных стоек."""
+
+    class Meta:
+        model = Bar
+        fields = '__all__'

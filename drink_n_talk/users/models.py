@@ -19,7 +19,7 @@ class User(AbstractUser):
     )
     photo = models.ImageField(
         upload_to='users_photos',
-        default='default_user.jpg',
+        default='user_avatar/default_user.jpg',
         verbose_name='аватар'
     )
     degree = models.IntegerField(
