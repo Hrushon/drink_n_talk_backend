@@ -12,15 +12,15 @@ class CustomUserCreateSerializer(UserCreateSerializer):
         model = User
         fields = (
             'username',
-            'name',
-            'surname',
+            'first_name',
+            'last_name',
             'email',
             'password',
             'about',
             'photo',
             'birth_day',
             'degree',
-            'silent_talker'
+            'character'
         )
 
 
@@ -32,12 +32,12 @@ class UserSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'username',
-            'name',
-            'surname',
+            'first_name',
+            'last_name',
             'email',
             'about',
             'photo',
             'birth_day',
             'degree',
-            'silent_talker'
+            'character'
         )
