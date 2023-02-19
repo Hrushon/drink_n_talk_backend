@@ -58,6 +58,14 @@ class BarViewSet(viewsets.ModelViewSet):
             return BarCreateSerializer
         return super().get_serializer_class()
 
+    def create(self, request, *args, **kwargs):
+        if not request.data.get('degree'):
+            degree = request.user.degree
+            if hasattr(request.user, 'userdrink'):
+                degree = request.user.userdrink.drink.degree
+            request.data['degree'] = degree
+        return super().create(request, *args, **kwargs)
+
     def perform_create(self, serializer):
         instance = serializer.save(initiator=self.request.user)
         BarParticipant.objects.create(
