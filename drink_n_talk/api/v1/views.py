@@ -4,13 +4,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from core.models import Bar, BarParticipant, Drink, Language, Theme
-from .serializers import (
-    BarCreateSerializer,
-    BarSerializer,
-    DrinkSerializer,
-    LanguageSerializer,
-    ThemeSerializer,
-)
+from .serializers import (BarCreateSerializer, BarSerializer, DrinkSerializer,
+                          LanguageSerializer, ThemeSerializer)
 
 
 class LanguageViewSet(viewsets.ReadOnlyModelViewSet):
