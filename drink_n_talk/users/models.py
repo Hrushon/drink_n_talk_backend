@@ -39,7 +39,7 @@ class User(AbstractUser):
         verbose_name = 'пользователь'
         verbose_name_plural = 'пользователи'
 
-    def __repr__(self):
+    def __str__(self):
         """
         Добавляет удобочитаемый вывод при вызове экземпляра объекта
         на печать и в оболочке shell.

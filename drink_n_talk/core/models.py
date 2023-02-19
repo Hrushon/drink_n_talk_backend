@@ -32,7 +32,7 @@ class Language(models.Model):
         verbose_name = 'язык'
         verbose_name_plural = 'языки'
 
-    def __repr__(self):
+    def __str__(self):
         """
         Добавляет удобочитаемый вывод при вызове экземпляра объекта
         на печать и в оболочке shell.
@@ -71,7 +71,7 @@ class UserLanguage(models.Model):
             )
         ]
 
-    def __repr__(self):
+    def __str__(self):
         """
         Добавляет удобочитаемый вывод при вызове экземпляра объекта
         на печать и в оболочке shell.
@@ -104,7 +104,7 @@ class Drink(models.Model):
         verbose_name = 'напиток'
         verbose_name_plural = 'напитки'
 
-    def __repr__(self):
+    def __str__(self):
         """
         Добавляет удобочитаемый вывод при вызове экземпляра объекта
         на печать и в оболочке shell.
@@ -144,7 +144,7 @@ class UserDrink(models.Model):
             )
         ]
 
-    def __repr__(self):
+    def __str__(self):
         """
         Добавляет удобочитаемый вывод при вызове экземпляра объекта
         на печать и в оболочке shell.
@@ -177,7 +177,7 @@ class Theme(models.Model):
         verbose_name = 'напиток'
         verbose_name_plural = 'напитки'
 
-    def __repr__(self):
+    def __str__(self):
         """
         Добавляет удобочитаемый вывод при вызове экземпляра объекта
         на печать и в оболочке shell.
@@ -217,7 +217,7 @@ class UserTheme(models.Model):
             )
         ]
 
-    def __repr__(self):
+    def __str__(self):
         """
         Добавляет удобочитаемый вывод при вызове экземпляра объекта
         на печать и в оболочке shell.
@@ -280,7 +280,7 @@ class Bar(models.Model):
         verbose_name = 'барная стойка'
         verbose_name_plural = 'барные стойки'
 
-    def __repr__(self):
+    def __str__(self):
         """
         Добавляет удобочитаемый вывод при вызове экземпляра объекта
         на печать и в оболочке shell.
@@ -321,7 +321,7 @@ class BarParticipant(models.Model):
             )
         ]
 
-    def __repr__(self):
+    def __str__(self):
         """
         Добавляет удобочитаемый вывод при вызове экземпляра объекта
         на печать и в оболочке shell.
