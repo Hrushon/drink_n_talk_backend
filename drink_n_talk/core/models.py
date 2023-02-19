@@ -115,12 +115,11 @@ class Drink(models.Model):
 class UserDrink(models.Model):
     """
     Промежуточная модель для присваивания пользователю
-    предпочитаемых напитков.
+    потребялемого напитка.
     """
 
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         User,
-        related_name='drinks',
         on_delete=models.CASCADE,
         verbose_name='пользователь'
     )
