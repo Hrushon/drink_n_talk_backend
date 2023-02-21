@@ -42,7 +42,7 @@ class DrinkViewSet(viewsets.ReadOnlyModelViewSet):
 
     @action(
         methods=['get', 'delete'],
-        detail=True        
+        detail=True
     )
     def pour(self, request, pk):
         """
@@ -106,7 +106,7 @@ class BarViewSet(viewsets.ModelViewSet):
     http_method_names = ['get', 'post', 'delete']
 
     def get_queryset(self):
-        user = self.request.user 
+        user = self.request.user
         if hasattr(user, 'barparticipant'):
             return list(user.barparticipant.bar)
         languages = user.language_set.all()
