@@ -15,9 +15,11 @@ class LanguageSerializer(serializers.ModelSerializer):
 class DrinkSerializer(serializers.ModelSerializer):
     """Сериализатор для напитков."""
 
+    users = UserSerializer(many=True)
+
     class Meta:
         model = Drink
-        fields = ('title', 'degree')
+        fields = ('title', 'degree', 'users')
 
 
 class ThemeSerializer(serializers.ModelSerializer):
