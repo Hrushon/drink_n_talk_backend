@@ -1,9 +1,11 @@
+from django.db.models import Count, F
 from rest_framework import serializers, status, viewsets
 from rest_framework.decorators import action
+from rest_framework.filters import SearchFilter
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from core.models import Bar, BarParticipant, Drink, Language, Theme
+from core.models import Bar, BarParticipant, Drink, Language, Theme, UserDrink
 from .serializers import (BarCreateSerializer, BarSerializer, DrinkSerializer,
                           LanguageSerializer, ThemeSerializer)
 
@@ -17,6 +19,8 @@ class LanguageViewSet(viewsets.ReadOnlyModelViewSet):
 
     serializer_class = LanguageSerializer
     queryset = Language.objects.all()
+    filter_backends = (SearchFilter,)
+    search_fields = ['^name', 'name']
 
 
 class DrinkViewSet(viewsets.ReadOnlyModelViewSet):
@@ -28,6 +32,55 @@ class DrinkViewSet(viewsets.ReadOnlyModelViewSet):
 
     serializer_class = DrinkSerializer
     queryset = Drink.objects.all()
+    filter_backends = (SearchFilter,)
+    search_fields = ['^title', 'title']
+
+    def get_permissions(self):
+        if self.action == 'pour':
+            self.permission_classes = (IsAuthenticated,)
+        return super().get_permissions()
+
+    @action(
+        methods=['get', 'delete'],
+        detail=True
+    )
+    def pour(self, request, pk):
+        """
+        Дополнительный маршрут для связывания пользователя с
+        выбранным напитком.
+        """
+        user = request.user
+        drink = self.get_object()
+        instance = False
+        if hasattr(user, 'userdrink'):
+            instance = user.userdrink
+        if request.method == 'DELETE':
+            if not instance or instance.drink != drink:
+                raise serializers.ValidationError(
+                    {
+                        'errors': [
+                            'Вы не употребляете этот напиток.'
+                        ]
+                    }
+                )
+            instance.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        if instance:
+            if instance.drink == drink:
+                raise serializers.ValidationError(
+                    {
+                        'errors': [
+                            'Вы уже употребляете этот напиток.'
+                        ]
+                    }
+                )
+            instance.delete()
+        UserDrink.objects.create(
+            user=user,
+            drink=drink
+        )
+        serializer = self.get_serializer(drink)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class ThemeViewSet(viewsets.ReadOnlyModelViewSet):
@@ -48,10 +101,26 @@ class BarViewSet(viewsets.ModelViewSet):
     Обрабатывает GET, POST, DELETE - запросы для работы с барными стойками.
     """
 
-    queryset = Bar.objects.all()
     serializer_class = BarSerializer
     permission_classes = (IsAuthenticated,)
     http_method_names = ['get', 'post', 'delete']
+
+    def get_queryset(self):
+        user = self.request.user
+        if hasattr(user, 'barparticipant'):
+            return list(user.barparticipant.bar)
+        languages = user.language_set.all()
+        degree = user.degree
+        if hasattr(user, 'userdrink'):
+            degree = user.userdrink
+        themes = user.theme_set.all()
+        return Bar.objects.annotate(
+            current_quantity=Count(F('participants'))
+        ).filter(
+            **{'language__in': languages},
+            **{'degree__gte': degree},
+            **{'theme__in': themes},
+        ).filter(quantity__gt=F('current_quantity'))
 
     def get_serializer_class(self):
         if self.action == 'create':
@@ -78,7 +147,11 @@ class BarViewSet(viewsets.ModelViewSet):
         detail=True
     )
     def to_join(self, request, pk):
-        participant = self.request.user
+        """
+        Дополнительный маршрут для присоединения/отсоединения участника
+        к барной стойке.
+        """
+        participant = request.user
         bar = self.get_object()
         instance = False
         if hasattr(participant, 'barparticipant'):
