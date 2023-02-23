@@ -93,10 +93,10 @@ class CustomUserCreateSerializer(UserCreateSerializer):
         """
         return UserSerializer(instance, context=self.context).data
 
-    def create(self, validated_data):
+    def perform_create(self, validated_data):
         languages = validated_data.pop('language')
         themes = validated_data.pop('theme')
-        user = User.objects.create(**validated_data)
+        user = super().perform_create(validated_data)
         for language in languages:
             UserLanguage.objects.create(
                 user=user,
