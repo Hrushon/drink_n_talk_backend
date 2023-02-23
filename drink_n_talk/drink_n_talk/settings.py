@@ -153,7 +153,7 @@ DJOSER = {
     'LOGIN_FIELD': 'username',
     'SERIALIZERS': {
         'user_create': 'users.serializers.CustomUserCreateSerializer',
-        'current_user': 'users.serializers.UserSerializer',
+        'current_user': 'users.serializers.CustomUserCreateSerializer',
         'user': 'users.serializers.UserSerializer',
     },
 }
