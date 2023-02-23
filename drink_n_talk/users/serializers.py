@@ -95,7 +95,7 @@ class CustomUserCreateSerializer(UserCreateSerializer):
 
     def perform_create(self, validated_data):
         languages = validated_data.pop('language')
-        themes = validated_data.pop('theme')        
+        themes = validated_data.pop('theme')
         user = super().perform_create(validated_data)
         for language in languages:
             UserLanguage.objects.create(
@@ -106,7 +106,7 @@ class CustomUserCreateSerializer(UserCreateSerializer):
             UserTheme.objects.create(
                 user=user,
                 theme=theme
-            )        
+            )
         return user
 
     def update(self, instance, validated_data):
