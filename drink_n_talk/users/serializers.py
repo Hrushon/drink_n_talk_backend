@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from djoser.serializers import UserCreateSerializer
 from rest_framework import serializers
 
-from core.models import UserLanguage, UserTheme, Language, Theme
+from core.models import Language, Theme, UserLanguage, UserTheme
 
 User = get_user_model()
 
@@ -26,8 +26,16 @@ class UserThemeSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     """Сериализатор для пользователей."""
 
-    theme = UserThemeSerializer(many=True, read_only=True, source='theme_set')
-    language = UserLanguageSerializer(many=True, read_only=True, source='language_set')
+    theme = UserThemeSerializer(
+        many=True,
+        read_only=True,
+        source='theme_set'
+    )
+    language = UserLanguageSerializer(
+        many=True,
+        read_only=True,
+        source='language_set'
+    )
 
     class Meta:
         model = User
