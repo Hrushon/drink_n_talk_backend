@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from core.models import Bar, BarParticipant, Drink, Language, Theme, UserDrink
+from .permissions import IsInitiatorOrAdminOnlyPermission
 from .serializers import (BarCreateSerializer, BarSerializer, DrinkSerializer,
                           LanguageSerializer, ThemeSerializer)
 
@@ -104,6 +105,11 @@ class BarViewSet(viewsets.ModelViewSet):
     serializer_class = BarSerializer
     permission_classes = (IsAuthenticated,)
     http_method_names = ['get', 'post', 'delete']
+
+    def get_permissions(self):
+        if self.request.method == 'DELETE':
+            return IsInitiatorOrAdminOnlyPermission
+        return super().get_permissions()
 
     def get_queryset(self):
         user = self.request.user
