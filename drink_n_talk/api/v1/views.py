@@ -132,8 +132,9 @@ class BarViewSet(viewsets.ModelViewSet):
             **{'language__in': languages},
             **{'degree__gte': degree},
             **{'theme__in': themes},
-        ).filter(quantity__gt=F('current_quantity')
-        ).order_by((order_type))
+        ).filter(
+            quantity__gt=F('current_quantity')
+        ).order_by(order_type)
 
     def get_serializer_class(self):
         if self.action == 'create':
