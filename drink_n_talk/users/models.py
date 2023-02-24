@@ -22,11 +22,11 @@ class User(AbstractUser):
         default='user_avatar/default_user.jpg',
         verbose_name='аватар'
     )
-    degree = models.IntegerField(
+    degree = models.PositiveSmallIntegerField(
         choices=settings.DEGREE_CHOICES,
         verbose_name='степень алкогольности'
     )
-    character = models.IntegerField(
+    character = models.SmallIntegerField(
         choices=settings.CHARACTER_CHOICES,
         verbose_name='слушатель/говорун'
     )

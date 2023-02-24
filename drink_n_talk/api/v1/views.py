@@ -1,4 +1,5 @@
-from django.db.models import Count, F
+from django.conf import settings
+from django.db.models import Count, F, Sum
 from rest_framework import serializers, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter
@@ -120,13 +121,19 @@ class BarViewSet(viewsets.ModelViewSet):
         if hasattr(user, 'userdrink'):
             degree = user.userdrink
         themes = user.theme_set.all()
+        order_type = '-current_characters'
+        if user.character == settings.TALKER:
+            order_type = 'current_characters'
         return Bar.objects.annotate(
-            current_quantity=Count(F('participants'))
+            current_quantity=Count('participants')
+        ).annotate(
+            current_characters=Sum('participants__character')
         ).filter(
             **{'language__in': languages},
             **{'degree__gte': degree},
             **{'theme__in': themes},
-        ).filter(quantity__gt=F('current_quantity'))
+        ).filter(quantity__gt=F('current_quantity')
+        ).order_by((order_type))
 
     def get_serializer_class(self):
         if self.action == 'create':

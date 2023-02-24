@@ -167,9 +167,11 @@ DEGREE_CHOICES = [
 ]
 
 CHARACTER_CHOICES = [
-    (0, 'Слушать'),
+    (-1, 'Слушать'),
     (1, 'Говорить')
 ]
+
+TALKER = 1
 
 # минимальное количество участников за барной стойкой
 MIN_COUNT_PARTICIPANTS = 2
