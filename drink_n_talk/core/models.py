@@ -86,7 +86,7 @@ class Drink(models.Model):
         max_length=20,
         verbose_name='название'
     )
-    degree = models.IntegerField(
+    degree = models.PositiveSmallIntegerField(
         choices=settings.DEGREE_CHOICES,
         verbose_name='степень алкогольности'
     )
@@ -244,7 +244,7 @@ class Bar(models.Model):
         on_delete=models.CASCADE,
         verbose_name='тема разговора'
     )
-    degree = models.IntegerField(
+    degree = models.PositiveSmallIntegerField(
         choices=settings.DEGREE_CHOICES,
         verbose_name='степень алкогольности'
     )
@@ -258,7 +258,7 @@ class Bar(models.Model):
         verbose_name='повестка',
         blank=True
     )
-    quantity = models.IntegerField(
+    quantity = models.PositiveSmallIntegerField(
         verbose_name='количество участников за столом',
         default=settings.DEFAULT_COUNT_PARTICIPANTS,
         validators=[
