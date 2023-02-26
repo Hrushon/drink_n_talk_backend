@@ -115,7 +115,7 @@ class BarViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         if hasattr(user, 'barparticipant'):
-            return list(user.barparticipant.bar)
+            return user.bar_set.all()
         languages = user.language_set.all()
         degree = user.degree
         if hasattr(user, 'userdrink'):
@@ -130,7 +130,7 @@ class BarViewSet(viewsets.ModelViewSet):
             current_characters=Sum('participants__character')
         ).filter(
             **{'language__in': languages},
-            **{'degree__gte': degree},
+            **{'degree__lte': degree},
             **{'theme__in': themes},
         ).filter(
             quantity__gt=F('current_quantity')
