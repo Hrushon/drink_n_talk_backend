@@ -179,3 +179,5 @@ MIN_COUNT_PARTICIPANTS = 2
 MAX_COUNT_PARTICIPANTS = 10
 # количество участников за барной стойкой по умолчанию
 DEFAULT_COUNT_PARTICIPANTS = 4
+# уровень алкоголизма участника по умолчанию
+DEFAULT_DEGREE = 0

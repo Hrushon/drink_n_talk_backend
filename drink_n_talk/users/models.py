@@ -24,6 +24,7 @@ class User(AbstractUser):
     )
     degree = models.PositiveSmallIntegerField(
         choices=settings.DEGREE_CHOICES,
+        default=settings.DEFAULT_DEGREE,
         verbose_name='степень алкогольности'
     )
     character = models.SmallIntegerField(
