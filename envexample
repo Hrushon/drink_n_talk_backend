@@ -1,0 +1,14 @@
+# секретный ключ для Django
+SECRET_KEY="django-insecure-__athl8^e51(0)zch#jgb3curg0k8wf!ivae9#z)q6e18^km@s"
+# указываем, что работаем с postgresql
+DB_ENGINE=django.db.backends.postgresql
+# указываем имя базы данных
+DB_NAME=postgres
+# логин для подключения к базе данных
+POSTGRES_USER=postgres
+# пароль для подключения к БД
+POSTGRES_PASSWORD=postgres
+# название сервиса (контейнера) для БД
+DB_HOST=db
+# указываем порт для подключения к БД
+DB_PORT=5432
