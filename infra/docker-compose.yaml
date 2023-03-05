@@ -9,7 +9,7 @@ services:
       - ./.env
 
   backend:
-    image: hrushon/drink_n_talk
+    image: hrushon/drink_n_talk:workflow
     build: ../drink_n_talk
     restart: always
     volumes:
