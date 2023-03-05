@@ -1,4 +1,4 @@
-![Workflow](https://github.com/drink-and-talk/drink_n_talk_backend/actions/workflows/drink_n_talk_workflow.yml/badge.svg)
+![Workflow](https://github.com/drink-and-talk/drink_n_talk_backend/actions/workflows/drink_n_talk_deploy.yml/badge.svg)
 
 ![Python](https://img.shields.io/badge/Python-3.10.9-blue?style=flat&logo=python&logoColor=yellow)
 ![Django](https://img.shields.io/badge/Django-4.0-red?style=flat&logo=django&logoColor=blue)
