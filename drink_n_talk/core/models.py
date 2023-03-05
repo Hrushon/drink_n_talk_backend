@@ -11,7 +11,7 @@ class Language(models.Model):
 
     name = models.CharField(
         unique=True,
-        max_length=20,
+        max_length=30,
         verbose_name='название'
     )
     abbreviation = models.SlugField(

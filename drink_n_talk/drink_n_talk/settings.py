@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -82,9 +83,13 @@ WSGI_APPLICATION = 'drink_n_talk.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.sqlite3'),
+        'NAME': os.getenv('DB_NAME', default=BASE_DIR / 'db.sqlite3'),
+        'USER': os.getenv('POSTGRES_USER', default='USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='PASSWORD'),
+        'HOST': os.getenv('DB_HOST', default='HOST'),
+        'PORT': os.getenv('DB_PORT', default='PORT'),        
+    },
 }
 
 
@@ -163,16 +168,16 @@ DJOSER = {
 DEGREE_CHOICES = [
     (0, 'Безалкогольное'),
     (1, 'Слабоалкогольное'),
-    (2, 'Крепкое')
+    (2, 'Крепкое'),
 ]
 
 CHARACTER_CHOICES = [
     (-1, 'Слушать'),
-    (1, 'Говорить')
+    (1, 'Говорить'),
 ]
 
+# используется в представлении барной стойки для сортировки результатов
 TALKER = 1
-
 # минимальное количество участников за барной стойкой
 MIN_COUNT_PARTICIPANTS = 2
 # максимальное количество участников за барной стойкой
