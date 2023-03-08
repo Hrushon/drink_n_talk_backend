@@ -173,8 +173,8 @@ class Theme(models.Model):
         Сортирует и добавляет названия в админке.
         """
         ordering = ('title',)
-        verbose_name = 'напиток'
-        verbose_name_plural = 'напитки'
+        verbose_name = 'тема'
+        verbose_name_plural = 'темы'
 
     def __str__(self):
         """
