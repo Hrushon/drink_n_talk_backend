@@ -64,11 +64,11 @@ sudo docker-compose up -d
 ```
 sudo docker-compose exec backend python manage.py migrate
 ```
-При первом запуске собираем статику:
++ собираем статику:
 ```
 sudo docker-compose exec backend python manage.py collectstatic --no-input
 ```
-Загружаем данные в базу:
++ загружаем данные в базу:
 ```
 sudo docker-compose exec backend python manage.py loaddata languages.json
 ```
