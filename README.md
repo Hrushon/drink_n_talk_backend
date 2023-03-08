@@ -70,7 +70,7 @@ sudo docker-compose exec backend python manage.py collectstatic --no-input
 ```
 + загружаем данные в базу:
 ```
-sudo docker-compose exec backend python manage.py loaddata languages.json
+sudo docker-compose exec backend python manage.py loaddata drinks_languages.json
 ```
 
 ## Эндпоинты приложения
