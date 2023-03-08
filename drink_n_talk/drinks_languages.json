@@ -1,5 +1,109 @@
 [
     {
+        "model": "core.drink",
+        "pk": 1,
+        "fields": {
+          "title": "Кофе",
+          "degree": 0
+        }
+    },
+    {
+        "model": "core.drink",
+        "pk": 2,
+        "fields": {
+          "title": "Пиво",
+          "degree": 1
+        }
+    },
+    {
+        "model": "core.drink",
+        "pk": 3,
+        "fields": {
+          "title": "Виски",
+          "degree": 2
+        }
+    },
+    {
+        "model": "core.drink",
+        "pk": 4,
+        "fields": {
+          "title": "Чай",
+          "degree": 0
+        }
+    },
+    {
+        "model": "core.drink",
+        "pk": 5,
+        "fields": {
+          "title": "Водка",
+          "degree": 2
+        }
+    },
+    {
+        "model": "core.drink",
+        "pk": 6,
+        "fields": {
+          "title": "Вино",
+          "degree": 1
+        }
+    },
+    {
+        "model": "core.drink",
+        "pk": 7,
+        "fields": {
+          "title": "Коньяк",
+          "degree": 2
+        }
+    },
+    {
+        "model": "core.drink",
+        "pk": 8,
+        "fields": {
+          "title": "Текила",
+          "degree": 2
+        }
+    },
+    {
+        "model": "core.drink",
+        "pk": 9,
+        "fields": {
+          "title": "Сок",
+          "degree": 0
+        }
+    },
+    {
+        "model": "core.drink",
+        "pk": 10,
+        "fields": {
+          "title": "Коктейль",
+          "degree": 1
+        }
+    },
+    {
+        "model": "core.drink",
+        "pk": 11,
+        "fields": {
+          "title": "Вермут",
+          "degree": 1
+        }
+    },
+    {
+        "model": "core.drink",
+        "pk": 12,
+        "fields": {
+          "title": "Шампанское",
+          "degree": 1
+        }
+    },
+    {
+        "model": "core.drink",
+        "pk": 13,
+        "fields": {
+          "title": "Ликер",
+          "degree": 2
+        }
+    },    
+    {
         "model": "core.language",
         "pk": 1,
         "fields": {
