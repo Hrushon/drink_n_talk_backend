@@ -1,6 +1,9 @@
 name: drink n talk workflow
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
