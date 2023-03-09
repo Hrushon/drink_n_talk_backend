@@ -1,13 +1,13 @@
 ![Workflow](https://github.com/drink-and-talk/drink_n_talk_backend/actions/workflows/drink_n_talk_deploy.yml/badge.svg)
 
 ![Python](https://img.shields.io/badge/Python-3.10.9-blue?style=flat&logo=python&logoColor=yellow)
-![Django](https://img.shields.io/badge/Django-4.0-red?style=flat&logo=django&logoColor=blue)
+![Django](https://img.shields.io/badge/Django-4.0-red?style=flat&logo=django&logoColor=green)
 
 
 # Drink&Talk ™
 ## Бэкенд для PET-проекта
 
-Идеей проекта является веб-сервис, позволяющий пользователям искать единомышленников и общаться посредством групповой on-line видео-конференции.
+Идеей проекта является веб-сервис, позволяющий пользователям искать единомышленников и общаться посредством групповой видео-связи.
 Критерии для подбора единомышленников:
 + язык общения
 + интересующая тема
