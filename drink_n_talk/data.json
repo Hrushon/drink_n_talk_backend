@@ -1,5 +1,100 @@
 [
     {
+        "model": "core.theme",
+        "pk": 1,
+        "fields": {
+            "title": "��������",
+            "tag": "politics"
+        }
+    },
+    {
+        "model": "core.theme",
+        "pk": 2,
+        "fields": {
+            "title": "���������",
+            "tag": "relationships"
+        }
+    },
+    {
+        "model": "core.theme",
+        "pk": 3,
+        "fields": {
+            "title": "���������",
+            "tag": "art"
+        }
+    },
+    {
+        "model": "core.theme",
+        "pk": 4,
+        "fields": {
+            "title": "�����",
+            "tag": "books"
+        }
+    },
+    {
+        "model": "core.theme",
+        "pk": 5,
+        "fields": {
+            "title": "������",
+            "tag": "films"
+        }
+    },
+    {
+        "model": "core.theme",
+        "pk": 6,
+        "fields": {
+            "title": "����",
+            "tag": "games"
+        }
+    },
+    {
+        "model": "core.theme",
+        "pk": 7,
+        "fields": {
+            "title": "�����������",
+            "tag": "travels"
+        }
+    },
+    {
+        "model": "core.theme",
+        "pk": 8,
+        "fields": {
+            "title": "�������� ��������",
+            "tag": "pets"
+        }
+    },
+    {
+        "model": "core.theme",
+        "pk": 9,
+        "fields": {
+            "title": "�����",
+            "tag": "hobby"
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 1,
+        "fields": {
+          "password": "pbkdf2_sha256$320000$FeEDsPs2jZzuJwl9Mmsh0t$F+Vjjfz9nSElKunoxyJdKoUji2zEyeCbMYNQOeKvYd8=",
+          "last_login": "2023-02-23T14:43:50.797Z",
+          "is_superuser": true,
+          "username": "drink",
+          "first_name": "Drink",
+          "last_name": "Talk",
+          "email": "drink@mail.com",
+          "is_staff": true,
+          "is_active": true,
+          "date_joined": "2023-02-23T07:15:01Z",
+          "birth_day": "1999-01-01",
+          "about": "Админ",
+          "photo": "user_avatar/default_user.jpg",
+          "degree": 2,
+          "character": 0,
+          "groups": [      ],
+          "user_permissions": [      ]
+        }
+    },
+    {
         "model": "core.drink",
         "pk": 1,
         "fields": {

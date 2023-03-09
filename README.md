@@ -68,9 +68,18 @@ sudo docker-compose exec backend python manage.py migrate
 ```
 sudo docker-compose exec backend python manage.py collectstatic --no-input
 ```
-+ загружаем данные в базу:
++ загружаем тестовые данные в базу, включающие в себя: большое количество языков, небольшое количество тем для разговоров, напитков и одного тестового пользователя-администратора:
 ```
-sudo docker-compose exec backend python manage.py loaddata drinks_languages.json
+sudo docker-compose exec backend python manage.py loaddata data.json
+```
+#### Логин и пароль от учетной записи тестового пользователя-администратора:
++ _логин_
+```
+drink
+```
++ _пароль_
+```
+talk2023
 ```
 
 ## Эндпоинты приложения
