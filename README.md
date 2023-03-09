@@ -68,7 +68,7 @@ sudo docker-compose exec backend python manage.py migrate
 ```
 sudo docker-compose exec backend python manage.py collectstatic --no-input
 ```
-+ загружаем тестовые данные в базу, включающие в себя: большое количество языков, небольшое количество тем для разговоров, напитков и одного тестового пользователя-администратора:
++ загружаем тестовые данные в базу, включающие в себя: большое количество языков, небольшое количество тем для разговоров, немного напитков и одного тестового пользователя-администратора:
 ```
 sudo docker-compose exec backend python manage.py loaddata data.json
 ```

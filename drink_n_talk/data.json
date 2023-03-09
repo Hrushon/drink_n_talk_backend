@@ -3,7 +3,7 @@
         "model": "core.theme",
         "pk": 1,
         "fields": {
-            "title": "��������",
+            "title": "Политика",
             "tag": "politics"
         }
     },
@@ -11,7 +11,7 @@
         "model": "core.theme",
         "pk": 2,
         "fields": {
-            "title": "���������",
+            "title": "Отношения",
             "tag": "relationships"
         }
     },
@@ -19,7 +19,7 @@
         "model": "core.theme",
         "pk": 3,
         "fields": {
-            "title": "���������",
+            "title": "Искусство",
             "tag": "art"
         }
     },
@@ -27,7 +27,7 @@
         "model": "core.theme",
         "pk": 4,
         "fields": {
-            "title": "�����",
+            "title": "Книги",
             "tag": "books"
         }
     },
@@ -35,7 +35,7 @@
         "model": "core.theme",
         "pk": 5,
         "fields": {
-            "title": "������",
+            "title": "Фильмы",
             "tag": "films"
         }
     },
@@ -43,7 +43,7 @@
         "model": "core.theme",
         "pk": 6,
         "fields": {
-            "title": "����",
+            "title": "Игры",
             "tag": "games"
         }
     },
@@ -51,7 +51,7 @@
         "model": "core.theme",
         "pk": 7,
         "fields": {
-            "title": "�����������",
+            "title": "Путешествия",
             "tag": "travels"
         }
     },
@@ -59,7 +59,7 @@
         "model": "core.theme",
         "pk": 8,
         "fields": {
-            "title": "�������� ��������",
+            "title": "Домашние животные",
             "tag": "pets"
         }
     },
@@ -67,7 +67,7 @@
         "model": "core.theme",
         "pk": 9,
         "fields": {
-            "title": "�����",
+            "title": "Хобби",
             "tag": "hobby"
         }
     },
