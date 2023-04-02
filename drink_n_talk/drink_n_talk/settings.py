@@ -162,6 +162,7 @@ DJOSER = {
         'user_create': 'users.serializers.CustomUserCreateSerializer',
         'current_user': 'users.serializers.CustomUserCreateSerializer',
         'user': 'users.serializers.UserSerializer',
+        'token_create': 'users.serializers.TokenUserCreateSerializer',
     },
 }
 
