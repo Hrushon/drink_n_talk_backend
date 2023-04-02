@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
-from djoser.serializers import UserCreateSerializer
+from django.contrib.auth.validators import UnicodeUsernameValidator
+from djoser.serializers import TokenCreateSerializer, UserCreateSerializer
 from rest_framework import serializers
+from rest_framework.validators import UniqueValidator
 
 from core.models import Language, Theme, UserLanguage, UserTheme
 
@@ -26,6 +28,7 @@ class UserThemeSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     """Сериализатор для пользователей."""
 
+    login = serializers.CharField(source='username')
     theme = UserThemeSerializer(
         many=True,
         read_only=True,
@@ -41,7 +44,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'id',
-            'username',
+            'login',
             'first_name',
             'last_name',
             'email',
@@ -58,6 +61,17 @@ class UserSerializer(serializers.ModelSerializer):
 class CustomUserCreateSerializer(UserCreateSerializer):
     """Кастомный сериализатор для создания пользователя."""
 
+    login = serializers.CharField(
+        help_text=('Обязательное поле. Не более 150 символов. '
+                   'Только буквы, цифры и символы @/./+/-/_.'),
+        label='Логин пользователя',
+        max_length=150,
+        validators=[
+            UnicodeUsernameValidator,
+            UniqueValidator(queryset=User.objects.all()),
+        ],
+        source='username',
+    )
     theme = serializers.SlugRelatedField(
         queryset=Theme.objects.all(),
         many=True,
@@ -72,7 +86,7 @@ class CustomUserCreateSerializer(UserCreateSerializer):
     class Meta:
         model = User
         fields = (
-            'username',
+            'login',
             'first_name',
             'last_name',
             'email',
@@ -117,3 +131,18 @@ class CustomUserCreateSerializer(UserCreateSerializer):
         if themes:
             instance.theme_set.set(themes)
         return super().update(instance, validated_data)
+
+
+class TokenUserCreateSerializer(TokenCreateSerializer):
+    """Кастомизация сериализатора для создания токена пользователю."""
+
+    def __init__(self, *args, **kwargs):
+        super(serializers.Serializer, self).__init__(*args, **kwargs)
+        self.user = None
+        self.fields['login'] = serializers.CharField(required=False)
+
+    def validate(self, attrs):
+        """Позволяет изменить `username` на `login`."""
+        username = attrs.get('login')
+        attrs['username'] = username
+        return super().validate(attrs)
