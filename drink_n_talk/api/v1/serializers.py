@@ -1,25 +1,15 @@
 from rest_framework import serializers
 
-from core.models import Bar, Drink, Language, Theme
+from core.models import Bar, Drink, Theme
 from users.serializers import UserSerializer
-
-
-class LanguageSerializer(serializers.ModelSerializer):
-    """Сериализатор для языков общения."""
-
-    class Meta:
-        model = Language
-        fields = ('name', 'abbreviation')
 
 
 class DrinkSerializer(serializers.ModelSerializer):
     """Сериализатор для напитков."""
 
-    users = UserSerializer(many=True)
-
     class Meta:
         model = Drink
-        fields = ('title', 'degree', 'users')
+        fields = ('title', 'degree',)
 
 
 class ThemeSerializer(serializers.ModelSerializer):
@@ -35,8 +25,7 @@ class BarSerializer(serializers.ModelSerializer):
 
     initiator = UserSerializer()
     participants = UserSerializer(many=True)
-    theme = ThemeSerializer()
-    language = LanguageSerializer()
+    theme = ThemeSerializer(many=True)
 
     class Meta:
         model = Bar
@@ -56,11 +45,8 @@ class BarCreateSerializer(serializers.ModelSerializer):
     )
     theme = serializers.SlugRelatedField(
         queryset=Theme.objects.all(),
-        slug_field='tag'
-    )
-    language = serializers.SlugRelatedField(
-        queryset=Language.objects.all(),
-        slug_field='abbreviation'
+        slug_field='tag',
+        many=True
     )
 
     class Meta:

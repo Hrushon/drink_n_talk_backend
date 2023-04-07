@@ -2,34 +2,13 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from spare.validators import validate_birthday
-
 
 class User(AbstractUser):
     """Кастомизация базовой модели пользователя."""
 
-    birth_day = models.DateField(
-        verbose_name='день рождения',
-        validators=[validate_birthday]
-    )
-    about = models.TextField(
-        blank=True,
-        max_length=254,
-        verbose_name='о себе'
-    )
-    photo = models.ImageField(
-        upload_to='users_photos',
-        default='user_avatar/default_user.jpg',
-        verbose_name='аватар'
-    )
-    degree = models.PositiveSmallIntegerField(
-        choices=settings.DEGREE_CHOICES,
-        default=settings.DEFAULT_DEGREE,
-        verbose_name='степень алкогольности'
-    )
-    character = models.SmallIntegerField(
-        choices=settings.CHARACTER_CHOICES,
-        verbose_name='слушатель/говорун'
+    sex = models.SmallIntegerField(
+        choices=settings.SEX_CHOICES,
+        verbose_name='мужчина/женщина',
     )
 
     class Meta:
