@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db.models import Count, F
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import serializers, status, viewsets
